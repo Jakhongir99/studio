@@ -55,8 +55,24 @@
 .login-scene[data-theme=dark] .access-orbit,.login-scene[data-theme=dark] .access-ticket-footer { border-color:rgba(255,255,255,.15); }
 @keyframes flow-travel { from { transform:translateX(-50px); } to { transform:translateX(420px); } }
 @keyframes orbit-turn { to { transform:rotate(360deg); } }
+@media(min-width:801px) and (max-height:920px) {
+  .login-scene { padding-top:20px; padding-bottom:14px; }
+  .login-main { min-height:0; gap:4vw; padding:20px 0; }
+  .login-story h1 { font-size:clamp(36px,4vw,58px); margin:14px 0; }
+  .login-description { line-height:1.6; }
+  .login-workflow { margin:28px 0 22px; }
+  .workflow-icon { width:54px; height:54px; margin-bottom:10px; }
+  .workflow-track { top:27px; }
+  .access-card { padding:22px 28px 0; }
+  .access-art { height:136px; margin:4px 0; }
+  .access-copy h2 { font-size:28px; margin:6px 0; }
+  .access-copy p { margin-bottom:16px; }
+  .access-status { min-height:48px; padding-top:10px; }
+  .access-ticket-footer { margin:0 -28px; padding:14px 28px; }
+  .login-footer { padding-top:12px; }
+}
 @media(max-width:1050px) { .login-main { gap:40px; }.login-story h1 { font-size:43px; }.workflow-step small { font-size:9px; } }
-@media(max-width:800px) { .login-main { grid-template-columns:1fr; padding:40px 0; gap:32px; }.login-story { text-align:center; }.login-eyebrow { justify-content:center; }.login-story h1 { font-size:42px; }.login-description { font-size:13px; }.login-workflow,.login-story-footer { display:none; }.access-stack { justify-self:center; }.login-header-note { display:none; }.login-footer>span:nth-child(2) { display:none; } }
+@media(max-width:800px) { .login-scene { height:auto; min-height:100dvh; overflow-x:hidden; overflow-y:auto; }.login-main { grid-template-columns:1fr; padding:40px 0; gap:32px; }.login-story { text-align:center; }.login-eyebrow { justify-content:center; }.login-story h1 { font-size:42px; }.login-description { font-size:13px; }.login-workflow,.login-story-footer { display:none; }.access-stack { justify-self:center; }.login-header-note { display:none; }.login-footer>span:nth-child(2) { display:none; } }
 @media(max-width:450px) { .login-scene { padding:24px; }.login-story h1 { font-size:34px; letter-spacing:-1.5px; }.login-main { padding:32px 0; }.login-wordmark>span { font-size:10px; }.access-card { padding:24px 22px 0; }.access-ticket-footer { margin:0 -22px; padding:18px 22px; }.access-art { height:140px; }.orbit-outer { width:130px; height:130px; }.orbit-inner { width:100px; height:100px; }.login-description br { display:none; } }
 @media(prefers-reduced-motion:reduce) { .workflow-track span,.workflow-step,.access-card,.orbit-inner,.is-connecting .access-key { animation:none; }.access-key,.access-button { transition:none; } }
 
