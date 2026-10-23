@@ -1,0 +1,98 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Poppins, "Montserrat Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.sso-button {
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.sso-button:hover:not(:disabled) {
+  border-color: #228be6;
+  box-shadow: 0 4px 18px rgba(34, 139, 230, 0.12);
+}
+:focus-visible {
+  outline: 2px solid #228be6;
+  outline-offset: 3px;
+}
+@keyframes feedback-countdown {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+.feedback-countdown {
+  animation-name: feedback-countdown;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sso-button { transition: none; }
+  .feedback-countdown { animation: none; }
+}
+
+
+@keyframes auth-enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sso-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34,139,230,0.16); }
+  60% { box-shadow: 0 0 0 14px rgba(34,139,230,0); }
+}
+@keyframes sso-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.auth-card { animation: auth-enter 450ms ease-out both; }
+.sso-emblem { width: 64px; border-radius: 20px; }
+.sso-emblem--active { animation: sso-pulse 1.2s ease-in-out infinite; }
+.sso-emblem--success { animation: none; }
+.sso-check, .sso-status { animation: auth-enter 220ms ease-out both; }
+.sso-progress { height: 3px; border-radius: 4px; overflow: hidden; background: rgba(34,139,230,0.1); }
+.sso-progress-fill { height: 100%; background: #228be6; transform-origin: left; animation: sso-progress 2300ms ease-in-out both; }
+@media (prefers-reduced-motion: reduce) {
+  .auth-card, .sso-emblem--active, .sso-check, .sso-status, .sso-progress-fill { animation: none; }
+}
+
+/* Shared workspace details */
+.page-scroll { scrollbar-width:thin; scrollbar-color:#ccd7d1 transparent; overscroll-behavior:contain; }
+.page-content { animation:auth-enter 300ms ease-out both; }
+.profile-hero { position:relative; overflow:hidden; display:flex; align-items:center; justify-content:space-between; gap:28px; padding:22px 24px; }
+.profile-hero::after { content:""; position:absolute; width:280px; height:280px; border:1px solid #82b69d20; border-radius:50%; top:-180px; right:120px; pointer-events:none; box-shadow:0 0 0 32px #82b69d08,0 0 0 64px #82b69d06; }
+.profile-completion { width:220px; flex-shrink:0; }
+.profile-avatar-wrap { position:relative; flex-shrink:0; }
+.profile-avatar { box-shadow:0 5px 16px #17433116; transition:background-color 220ms; font-size:27px; }
+.profile-online { position:absolute; bottom:-3px; right:-3px; width:22px; height:22px; border:3px solid #f3f9f2; border-radius:50%; background:#199c71; color:white; display:grid; place-items:center; }
+.profile-grid { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:20px; }
+.profile-swatch { transition:transform 150ms,outline-color 150ms; }.profile-swatch:hover { transform:translateY(-3px); }
+.profile-menu-trigger { border-radius:50%; transition:box-shadow 180ms,transform 180ms; }.profile-menu-trigger:hover { transform:translateY(-1px); box-shadow:0 0 0 4px #ffffff20; }
+.profile-stat { transition:border-color 180ms,box-shadow 180ms; }.profile-stat:hover { box-shadow:0 5px 18px #204e3e09; }
+.mini-bars { display:flex; gap:4px; align-items:flex-end; height:36px; opacity:.65; }.mini-bars i { width:5px; background:#83c6a6; border-radius:3px; transform-origin:bottom; animation:bar-grow 500ms ease both; }
+.notification-row { animation:notification-enter 320ms ease both; animation-delay:var(--row-delay,0ms); transition:background 200ms,border-color 200ms,opacity 180ms,transform 180ms; }
+.notification-row--leaving { animation:none; opacity:0; transform:translateX(20px) scale(.98); pointer-events:none; }
+.notification-unread-dot { width:7px; height:7px; flex-shrink:0; border-radius:50%; background:#219c73; box-shadow:0 0 0 4px #219c7310; animation:unread-pulse 1.5s ease 3; }
+.notification-bell { transform-origin:50% 15%; animation:bell-ring 900ms ease 1; }
+.notification-empty { animation:auth-enter 300ms ease both; }
+.feedback-result-icon { position:relative; animation:result-pop 420ms cubic-bezier(.22,1.3,.5,1) both; }
+.feedback-result-icon::after { content:""; position:absolute; inset:-8px; border:1px solid currentColor; border-radius:32px; opacity:.15; animation:result-ring 700ms ease-out both; }
+.feedback-result-mark { animation:result-pop 450ms 100ms cubic-bezier(.22,1.3,.5,1) both; }
+@keyframes result-pop { from { opacity:0; transform:scale(.65) rotate(-10deg); } to { opacity:1; transform:scale(1) rotate(0); } }
+@keyframes result-ring { from { transform:scale(.7); opacity:.4; } to { transform:scale(1.15); opacity:0; } }
+@keyframes bar-grow { from { transform:scaleY(.3); } to { transform:scaleY(1); } }
+@keyframes notification-enter { from { opacity:0; transform:translateY(9px); } to { opacity:1; transform:translateY(0); } }
+@keyframes unread-pulse { 50% { box-shadow:0 0 0 6px #219c7308; } }
+@keyframes bell-ring { 15%,45% { transform:rotate(12deg); } 30%,60% { transform:rotate(-12deg); } 75% { transform:rotate(5deg); } }
+@media(max-width:1000px) { .profile-grid { grid-template-columns:1fr; }.profile-hero { flex-wrap:wrap; }.profile-completion { width:100%; } }
+@media(max-width:600px) { .profile-hero { padding:20px; }.profile-identity { flex-wrap:wrap; }.profile-grid>div { padding:18px; } }
+@media(prefers-reduced-motion:reduce) { .page-content,.mini-bars i,.notification-row,.notification-unread-dot,.notification-bell,.notification-empty,.feedback-result-icon,.feedback-result-icon::after,.feedback-result-mark { animation:none; }.profile-avatar,.profile-swatch,.profile-menu-trigger,.profile-stat,.notification-row { transition:none; } }
+
+.dashboard-stat { transition:transform 180ms ease,box-shadow 180ms ease; }
+.dashboard-stat:hover { transform:translateY(-3px); box-shadow:0 8px 24px #1647330c; }
+@media(prefers-reduced-motion:reduce) { .dashboard-stat { transition:none; }.dashboard-stat:hover { transform:none; } }
