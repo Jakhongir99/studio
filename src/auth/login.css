@@ -1,4 +1,4 @@
-.login-scene { min-height:100dvh; color:#fff; position:relative; isolation:isolate; display:flex; flex-direction:column; padding:32px 5vw 22px; overflow:hidden; }
+.login-scene { height:100dvh; min-height:100dvh; box-sizing:border-box; color:#fff; position:relative; isolation:isolate; display:flex; flex-direction:column; padding:32px 5vw 22px; overflow:hidden; }
 .login-scene::before { content:""; position:absolute; inset:0; z-index:-2; background:linear-gradient(115deg,rgba(5,10,20,.55),rgba(5,10,20,.16)); }
 .login-scene::after { content:""; position:absolute; inset:0; z-index:-1; opacity:.10; background-image:linear-gradient(#c7f0d9 1px,transparent 1px),linear-gradient(90deg,#c7f0d9 1px,transparent 1px); background-size:88px 88px; mask-image:linear-gradient(120deg,transparent 15%,#000); pointer-events:none; }
 .login-header,.login-footer { display:flex; align-items:center; justify-content:space-between; gap:20px; }
